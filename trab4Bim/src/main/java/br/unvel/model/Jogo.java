@@ -8,6 +8,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Column;
 import javax.persistence.Version;
 import java.lang.Override;
+import br.unvel.model.Categoria;
+import java.util.Set;
+import java.util.HashSet;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Jogo implements Serializable
@@ -23,6 +27,9 @@ public class Jogo implements Serializable
 
    @Column(length = 60, nullable = false)
    private String nome;
+
+   @ManyToMany
+   private Set<Categoria> categoria = new HashSet<Categoria>();
 
    public Long getId()
    {
@@ -92,5 +99,15 @@ public class Jogo implements Serializable
       if (nome != null && !nome.trim().isEmpty())
          result += "nome: " + nome;
       return result;
+   }
+
+   public Set<Categoria> getCategoria()
+   {
+      return this.categoria;
+   }
+
+   public void setCategoria(final Set<Categoria> categoria)
+   {
+      this.categoria = categoria;
    }
 }

@@ -24,6 +24,9 @@ public class Usuario implements Serializable
    @Column(length = 60, nullable = false)
    private String nome;
 
+   @Column(length = 10, nullable = false)
+   private String login;
+
    public Long getId()
    {
       return this.id;
@@ -85,12 +88,24 @@ public class Usuario implements Serializable
       this.nome = nome;
    }
 
+   public String getLogin()
+   {
+      return login;
+   }
+
+   public void setLogin(String login)
+   {
+      this.login = login;
+   }
+
    @Override
    public String toString()
    {
       String result = getClass().getSimpleName() + " ";
       if (nome != null && !nome.trim().isEmpty())
          result += "nome: " + nome;
+      if (login != null && !login.trim().isEmpty())
+         result += ", login: " + login;
       return result;
    }
 }

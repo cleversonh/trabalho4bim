@@ -10,7 +10,7 @@ import javax.persistence.Version;
 import java.lang.Override;
 
 @Entity
-public class categoria implements Serializable
+public class Categoria implements Serializable
 {
 
    @Id
@@ -57,11 +57,11 @@ public class categoria implements Serializable
       {
          return true;
       }
-      if (!(obj instanceof categoria))
+      if (!(obj instanceof Categoria))
       {
          return false;
       }
-      categoria other = (categoria) obj;
+      Categoria other = (Categoria) obj;
       if (id != null)
       {
          if (!id.equals(other.id))

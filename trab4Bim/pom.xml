@@ -26,12 +26,56 @@
         <version>1.0.0.Draft-16</version>
         <scope>provided</scope>
       </dependency>
+      <dependency>
+        <groupId>javax.enterprise</groupId>
+        <artifactId>cdi-api</artifactId>
+        <version>1.1</version>
+        <scope>provided</scope>
+      </dependency>
+      <dependency>
+        <groupId>javax.ejb</groupId>
+        <artifactId>javax.ejb-api</artifactId>
+        <version>3.2</version>
+        <scope>provided</scope>
+      </dependency>
+      <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>javax.servlet-api</artifactId>
+        <version>3.1.0</version>
+        <scope>provided</scope>
+      </dependency>
+      <dependency>
+        <groupId>javax.faces</groupId>
+        <artifactId>javax.faces-api</artifactId>
+        <version>2.2</version>
+        <scope>provided</scope>
+      </dependency>
     </dependencies>
   </dependencyManagement>
   <dependencies>
     <dependency>
       <groupId>org.hibernate.javax.persistence</groupId>
       <artifactId>hibernate-jpa-2.1-api</artifactId>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>javax.enterprise</groupId>
+      <artifactId>cdi-api</artifactId>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>javax.ejb</groupId>
+      <artifactId>javax.ejb-api</artifactId>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>javax.faces</groupId>
+      <artifactId>javax.faces-api</artifactId>
       <scope>provided</scope>
     </dependency>
   </dependencies>

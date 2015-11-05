@@ -31,6 +31,9 @@ public class Jogo implements Serializable
    @ManyToMany
    private Set<Categoria> categoria = new HashSet<Categoria>();
 
+   @Column
+   private float valor;
+
    public Long getId()
    {
       return this.id;
@@ -92,15 +95,6 @@ public class Jogo implements Serializable
       this.nome = nome;
    }
 
-   @Override
-   public String toString()
-   {
-      String result = getClass().getSimpleName() + " ";
-      if (nome != null && !nome.trim().isEmpty())
-         result += "nome: " + nome;
-      return result;
-   }
-
    public Set<Categoria> getCategoria()
    {
       return this.categoria;
@@ -109,5 +103,25 @@ public class Jogo implements Serializable
    public void setCategoria(final Set<Categoria> categoria)
    {
       this.categoria = categoria;
+   }
+
+   public float getValor()
+   {
+      return valor;
+   }
+
+   public void setValor(float valor)
+   {
+      this.valor = valor;
+   }
+
+   @Override
+   public String toString()
+   {
+      String result = getClass().getSimpleName() + " ";
+      if (nome != null && !nome.trim().isEmpty())
+         result += "nome: " + nome;
+      result += ", valor: " + valor;
+      return result;
    }
 }

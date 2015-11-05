@@ -24,6 +24,9 @@ public class Venda implements Serializable
    @Column(nullable = false)
    private String jogo;
 
+   @Column
+   private float valor;
+
    public Long getId()
    {
       return this.id;
@@ -85,12 +88,23 @@ public class Venda implements Serializable
       this.jogo = jogo;
    }
 
+   public float getValor()
+   {
+      return valor;
+   }
+
+   public void setValor(float valor)
+   {
+      this.valor = valor;
+   }
+
    @Override
    public String toString()
    {
       String result = getClass().getSimpleName() + " ";
       if (jogo != null && !jogo.trim().isEmpty())
          result += "jogo: " + jogo;
+      result += ", valor: " + valor;
       return result;
    }
 }

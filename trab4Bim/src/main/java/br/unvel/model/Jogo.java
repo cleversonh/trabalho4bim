@@ -34,6 +34,9 @@ public class Jogo implements Serializable
    @Column
    private float valor;
 
+   @Column
+   private String descricao;
+
    public Long getId()
    {
       return this.id;
@@ -115,6 +118,16 @@ public class Jogo implements Serializable
       this.valor = valor;
    }
 
+   public String getDescricao()
+   {
+      return descricao;
+   }
+
+   public void setDescricao(String descricao)
+   {
+      this.descricao = descricao;
+   }
+
    @Override
    public String toString()
    {
@@ -122,6 +135,8 @@ public class Jogo implements Serializable
       if (nome != null && !nome.trim().isEmpty())
          result += "nome: " + nome;
       result += ", valor: " + valor;
+      if (descricao != null && !descricao.trim().isEmpty())
+         result += ", descricao: " + descricao;
       return result;
    }
 }

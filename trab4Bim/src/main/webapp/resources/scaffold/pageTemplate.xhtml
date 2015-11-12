@@ -17,12 +17,12 @@
 			<div class="container">
 				<h:link id="brandLink" outcome="/index.xhtml" styleClass="brand">
 					<h:outputText value="Welcome to " rendered=" #{request.userPrincipal !=null} "/>
-                    Estim
+                    Trab 4Bim
                     <h:outputText value=",  #{request.userPrincipal.name}" rendered="#{request.userPrincipal !=null} "/>
 				</h:link>
 				<div class="nav-collapse collapse">
 					<ul class="nav">
-						<li><a href="/trab4Bim/faces/index.xhtml">Home</a></li>
+						<li><a href="http://forge.jboss.org/docs/important_plugins/ui-scaffolding.html">How to Customize</a></li>
 					</ul>
 				</div>
 			</div>
@@ -32,18 +32,23 @@
 	<div class="container forgecontainer">
 		<div id="navigation">
 			<h:link id="homeLink" outcome="/index.xhtml">
-				<img src='http://www.infotecnologia.com.br/wp-content/uploads/2014/01/controle2-01.jpg' alt="Forge... get hammered" border="0" height="180" width="160"/>
+				<img src='#{resource["forge-logo.png"]}' alt="Forge... get hammered" border="0" />
 			</h:link>
 			<ul>
 				<li>
 					<h:link outcome="/categoria/search" value="Categoria"/>
 				</li>
-				
+				<li>
+					<h:link outcome="/faces/search" value="Faces"/>
+				</li>
 				<li>
 					<h:link outcome="/jogo/search" value="Jogo"/>
 				</li>
 				<li>
 					<h:link outcome="/usuario/search" value="Usuario"/>
+				</li>
+				<li>
+					<h:link outcome="/venda/search" value="Venda"/>
 				</li>
 			</ul>
 		</div>
@@ -62,15 +67,9 @@
 
 	<footer>
 		<div id="footer-wrapper">
-	    	<p>Click aqui se precisa de <a href="http://google.com">Ajuda</a></p>
+	    	<p>Powered by <a href="http://jboss.org/forge">Forge</a></p>
 	    </div>
 	</footer>
 
 </h:body>
 </html>
-
-<!-- 
-<li>
-	<h:link outcome="/faces/search" value="Faces"/>
-</li>
- -->

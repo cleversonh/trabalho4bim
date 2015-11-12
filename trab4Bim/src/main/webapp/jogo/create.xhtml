@@ -69,6 +69,18 @@
 					</h:panelGrid>
 				</h:panelGroup>
 				<h:outputText/>
+				<h:outputLabel for="jogoBeanJogoValor" value="Valor:"/>
+				<h:panelGroup>
+					<h:inputText id="jogoBeanJogoValor" value="#{jogoBean.jogo.valor}"/>
+					<h:message for="jogoBeanJogoValor" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="jogoBeanJogoDescricao" value="Descricao:"/>
+				<h:panelGroup>
+					<h:inputText id="jogoBeanJogoDescricao" value="#{jogoBean.jogo.descricao}"/>
+					<h:message for="jogoBeanJogoDescricao" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
 			</h:panelGrid>
 
 			<div class="buttons">

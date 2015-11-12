@@ -24,12 +24,12 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
-import br.unvel.model.Jogo;
+import br.unvel.model.Venda;
 
 /**
- * Backing bean for Jogo entities.
+ * Backing bean for Venda entities.
  * <p/>
- * This class provides CRUD functionality for all Jogo entities. It focuses
+ * This class provides CRUD functionality for all Venda entities. It focuses
  * purely on Java EE 6 standards (e.g. <tt>&#64;ConversationScoped</tt> for
  * state management, <tt>PersistenceContext</tt> for persistence,
  * <tt>CriteriaBuilder</tt> for searches) rather than introducing a CRUD framework or
@@ -39,13 +39,13 @@ import br.unvel.model.Jogo;
 @Named
 @Stateful
 @ConversationScoped
-public class JogoBean implements Serializable
+public class VendaBean implements Serializable
 {
 
    private static final long serialVersionUID = 1L;
 
    /*
-    * Support creating and retrieving Jogo entities
+    * Support creating and retrieving Venda entities
     */
 
    private Long id;
@@ -60,16 +60,16 @@ public class JogoBean implements Serializable
       this.id = id;
    }
 
-   private Jogo jogo;
+   private Venda venda;
 
-   public Jogo getJogo()
+   public Venda getVenda()
    {
-      return this.jogo;
+      return this.venda;
    }
 
-   public void setJogo(Jogo jogo)
+   public void setVenda(Venda venda)
    {
-      this.jogo = jogo;
+      this.venda = venda;
    }
 
    @Inject
@@ -102,22 +102,22 @@ public class JogoBean implements Serializable
 
       if (this.id == null)
       {
-         this.jogo = this.example;
+         this.venda = this.example;
       }
       else
       {
-         this.jogo = findById(getId());
+         this.venda = findById(getId());
       }
    }
 
-   public Jogo findById(Long id)
+   public Venda findById(Long id)
    {
 
-      return this.entityManager.find(Jogo.class, id);
+      return this.entityManager.find(Venda.class, id);
    }
 
    /*
-    * Support updating and deleting Jogo entities
+    * Support updating and deleting Venda entities
     */
 
    public String update()
@@ -128,13 +128,13 @@ public class JogoBean implements Serializable
       {
          if (this.id == null)
          {
-            this.entityManager.persist(this.jogo);
+            this.entityManager.persist(this.venda);
             return "search?faces-redirect=true";
          }
          else
          {
-            this.entityManager.merge(this.jogo);
-            return "view?faces-redirect=true&id=" + this.jogo.getId();
+            this.entityManager.merge(this.venda);
+            return "view?faces-redirect=true&id=" + this.venda.getId();
          }
       }
       catch (Exception e)
@@ -150,7 +150,7 @@ public class JogoBean implements Serializable
 
       try
       {
-         Jogo deletableEntity = findById(getId());
+         Venda deletableEntity = findById(getId());
 
          this.entityManager.remove(deletableEntity);
          this.entityManager.flush();
@@ -164,14 +164,14 @@ public class JogoBean implements Serializable
    }
 
    /*
-    * Support searching Jogo entities with pagination
+    * Support searching Venda entities with pagination
     */
 
    private int page;
    private long count;
-   private List<Jogo> pageItems;
+   private List<Venda> pageItems;
 
-   private Jogo example = new Jogo();
+   private Venda example = new Venda();
 
    public int getPage()
    {
@@ -188,12 +188,12 @@ public class JogoBean implements Serializable
       return 10;
    }
 
-   public Jogo getExample()
+   public Venda getExample()
    {
       return this.example;
    }
 
-   public void setExample(Jogo example)
+   public void setExample(Venda example)
    {
       this.example = example;
    }
@@ -212,7 +212,7 @@ public class JogoBean implements Serializable
       // Populate this.count
 
       CriteriaQuery<Long> countCriteria = builder.createQuery(Long.class);
-      Root<Jogo> root = countCriteria.from(Jogo.class);
+      Root<Venda> root = countCriteria.from(Venda.class);
       countCriteria = countCriteria.select(builder.count(root)).where(
             getSearchPredicates(root));
       this.count = this.entityManager.createQuery(countCriteria)
@@ -220,25 +220,25 @@ public class JogoBean implements Serializable
 
       // Populate this.pageItems
 
-      CriteriaQuery<Jogo> criteria = builder.createQuery(Jogo.class);
-      root = criteria.from(Jogo.class);
-      TypedQuery<Jogo> query = this.entityManager.createQuery(criteria
+      CriteriaQuery<Venda> criteria = builder.createQuery(Venda.class);
+      root = criteria.from(Venda.class);
+      TypedQuery<Venda> query = this.entityManager.createQuery(criteria
             .select(root).where(getSearchPredicates(root)));
       query.setFirstResult(this.page * getPageSize()).setMaxResults(
             getPageSize());
       this.pageItems = query.getResultList();
    }
 
-   private Predicate[] getSearchPredicates(Root<Jogo> root)
+   private Predicate[] getSearchPredicates(Root<Venda> root)
    {
 
       CriteriaBuilder builder = this.entityManager.getCriteriaBuilder();
       List<Predicate> predicatesList = new ArrayList<Predicate>();
 
-      String nome = this.example.getNome();
-      if (nome != null && !"".equals(nome))
+      String jogo = this.example.getJogo();
+      if (jogo != null && !"".equals(jogo))
       {
-         predicatesList.add(builder.like(builder.lower(root.<String> get("nome")), '%' + nome.toLowerCase() + '%'));
+         predicatesList.add(builder.like(builder.lower(root.<String> get("jogo")), '%' + jogo.toLowerCase() + '%'));
       }
       String descricao = this.example.getDescricao();
       if (descricao != null && !"".equals(descricao))
@@ -249,7 +249,7 @@ public class JogoBean implements Serializable
       return predicatesList.toArray(new Predicate[predicatesList.size()]);
    }
 
-   public List<Jogo> getPageItems()
+   public List<Venda> getPageItems()
    {
       return this.pageItems;
    }
@@ -260,17 +260,17 @@ public class JogoBean implements Serializable
    }
 
    /*
-    * Support listing and POSTing back Jogo entities (e.g. from inside an
+    * Support listing and POSTing back Venda entities (e.g. from inside an
     * HtmlSelectOneMenu)
     */
 
-   public List<Jogo> getAll()
+   public List<Venda> getAll()
    {
 
-      CriteriaQuery<Jogo> criteria = this.entityManager
-            .getCriteriaBuilder().createQuery(Jogo.class);
+      CriteriaQuery<Venda> criteria = this.entityManager
+            .getCriteriaBuilder().createQuery(Venda.class);
       return this.entityManager.createQuery(
-            criteria.select(criteria.from(Jogo.class))).getResultList();
+            criteria.select(criteria.from(Venda.class))).getResultList();
    }
 
    @Resource
@@ -279,7 +279,7 @@ public class JogoBean implements Serializable
    public Converter getConverter()
    {
 
-      final JogoBean ejbProxy = this.sessionContext.getBusinessObject(JogoBean.class);
+      final VendaBean ejbProxy = this.sessionContext.getBusinessObject(VendaBean.class);
 
       return new Converter()
       {
@@ -302,7 +302,7 @@ public class JogoBean implements Serializable
                return "";
             }
 
-            return String.valueOf(((Jogo) value).getId());
+            return String.valueOf(((Venda) value).getId());
          }
       };
    }
@@ -311,17 +311,17 @@ public class JogoBean implements Serializable
     * Support adding children to bidirectional, one-to-many tables
     */
 
-   private Jogo add = new Jogo();
+   private Venda add = new Venda();
 
-   public Jogo getAdd()
+   public Venda getAdd()
    {
       return this.add;
    }
 
-   public Jogo getAdded()
+   public Venda getAdded()
    {
-      Jogo added = this.add;
-      this.add = new Jogo();
+      Venda added = this.add;
+      this.add = new Venda();
       return added;
    }
 }

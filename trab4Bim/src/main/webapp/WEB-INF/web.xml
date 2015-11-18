@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="3.1" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="3.0" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
 <display-name>trab4Bim</display-name>
   <session-config>
   <session-timeout>30</session-timeout>
@@ -13,11 +13,14 @@
     <param-value>true</param-value>
   </context-param>
   <error-page>
-    <error-code>404</error-code>
+  <error-code>404</error-code>
     <location>/faces/error.xhtml</location>
   </error-page>
   <error-page>
-    <error-code>500</error-code>
+  <error-code>500</error-code>
     <location>/faces/error.xhtml</location>
   </error-page>
+  <welcome-file-list>
+    <welcome-file>/index.html</welcome-file>
+  </welcome-file-list>
 </web-app>

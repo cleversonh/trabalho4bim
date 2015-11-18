@@ -12,8 +12,10 @@ import br.unvel.model.Categoria;
 import java.util.Set;
 import java.util.HashSet;
 import javax.persistence.ManyToMany;
+import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
+@XmlRootElement
 public class Jogo implements Serializable
 {
 

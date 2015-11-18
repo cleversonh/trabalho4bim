@@ -1,0 +1,52 @@
+<header ng-switch on="$location.path().indexOf('/Jogos/new') > -1">
+    <h3 ng-switch-when="true">Create a new Jogo</h3>
+    <h3 ng-switch-when="false">View or edit Jogo</h3>
+</header>
+<form id="JogoForm" name="JogoForm" class="form-horizontal" role="form">
+    <div ng-show="displayError" class="alert alert-danger">
+        <strong>Error!</strong> Something broke. Retry, or cancel and start afresh.
+    </div>
+    
+
+    <div class="form-group" ng-class="{'has-error': JogoForm.nome.$invalid}">
+        <label for="nome" class="col-sm-2 control-label">Nome</label>
+        <div id="nomeControls" class="col-sm-10">
+            <input id="nome" name="nome" type="text" required ng-maxlength="60" class="form-control" ng-model="jogo.nome" placeholder="Enter the Jogo Nome"></input>
+            <span class="help-block error" ng-show="JogoForm.nome.$error.required">required</span> 
+            <span class="help-block error" ng-show="JogoForm.nome.$error.maxlength">maximum length is 60</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': JogoForm.categoria.$invalid}">
+        <label for="categoria" class="col-sm-2 control-label">Categoria</label>
+        <div id="categoriaControls" class="col-sm-10">
+            <select id="categoria" name="categoria" multiple class="form-control" ng-model="categoriaSelection" ng-options="c.text for c in categoriaSelectionList">
+                <option value="">Choose a Categoria</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': JogoForm.valor.$invalid}">
+        <label for="valor" class="col-sm-2 control-label">Valor</label>
+        <div id="valorControls" class="col-sm-10">
+            <input id="valor" name="valor" type="number" class="form-control" ng-model="jogo.valor" placeholder="Enter the Jogo Valor"></input>
+            <span class="help-block error" ng-show="JogoForm.valor.$error.number">not a number</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': JogoForm.descricao.$invalid}">
+        <label for="descricao" class="col-sm-2 control-label">Descricao</label>
+        <div id="descricaoControls" class="col-sm-10">
+            <input id="descricao" name="descricao" type="text" class="form-control" ng-model="jogo.descricao" placeholder="Enter the Jogo Descricao"></input>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button id="saveJogo" name="saveJogo" class="btn btn-primary" ng-disabled="isClean() || JogoForm.$invalid" ng-click="save()"><span class="glyphicon glyphicon-ok-sign"></span> Save</button>
+            <button id="cancel" name="cancel" class="btn btn-default" ng-click="cancel()"><span class="glyphicon glyphicon-remove-sign"></span> Cancel</button>
+            <button id="deleteJogo" name="deleteJogo" class="btn btn-danger" ng-show="jogo.id" ng-click="remove()"><span class="glyphicon glyphicon-trash"></span> Delete</button>
+        </div>
+    </div>
+</form>

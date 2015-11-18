@@ -1,0 +1,28 @@
+<header ng-switch on="$location.path().indexOf('/Categoria/new') > -1">
+    <h3 ng-switch-when="true">Create a new Categoria</h3>
+    <h3 ng-switch-when="false">View or edit Categoria</h3>
+</header>
+<form id="CategoriaForm" name="CategoriaForm" class="form-horizontal" role="form">
+    <div ng-show="displayError" class="alert alert-danger">
+        <strong>Error!</strong> Something broke. Retry, or cancel and start afresh.
+    </div>
+    
+
+    <div class="form-group" ng-class="{'has-error': CategoriaForm.nome.$invalid}">
+        <label for="nome" class="col-sm-2 control-label">Nome</label>
+        <div id="nomeControls" class="col-sm-10">
+            <input id="nome" name="nome" type="text" required ng-maxlength="20" class="form-control" ng-model="categoria.nome" placeholder="Enter the Categoria Nome"></input>
+            <span class="help-block error" ng-show="CategoriaForm.nome.$error.required">required</span> 
+            <span class="help-block error" ng-show="CategoriaForm.nome.$error.maxlength">maximum length is 20</span>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button id="saveCategoria" name="saveCategoria" class="btn btn-primary" ng-disabled="isClean() || CategoriaForm.$invalid" ng-click="save()"><span class="glyphicon glyphicon-ok-sign"></span> Save</button>
+            <button id="cancel" name="cancel" class="btn btn-default" ng-click="cancel()"><span class="glyphicon glyphicon-remove-sign"></span> Cancel</button>
+            <button id="deleteCategoria" name="deleteCategoria" class="btn btn-danger" ng-show="categoria.id" ng-click="remove()"><span class="glyphicon glyphicon-trash"></span> Delete</button>
+        </div>
+    </div>
+</form>

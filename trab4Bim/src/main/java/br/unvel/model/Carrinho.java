@@ -12,13 +12,14 @@ public class Carrinho {
 			if (jogo.getId() == i) {
 				Integer quant = quantidades.get(i);
 				quantidades.put(i, ++quant);
-			} else {
-				jogos.put(i, jogo);
-				quantidades.put(i, 1);
+				return;
 			}
 		}
+		jogos.put(jogo.getId(), jogo);
+		quantidades.put(jogo.getId(), 1);
+
 	}
-	
+
 	public void limpar() {
 
 		jogos.clear();
@@ -41,7 +42,24 @@ public class Carrinho {
 	public void setQuantidades(HashMap<Long, Integer> quantidades) {
 		this.quantidades = quantidades;
 	}
-	
-	
+
+	public void execluirJogos(Jogo jogo) {
+		
+		jogos.remove(jogo.getId());
+		quantidades.remove(jogo.getId());
+		
+			
+	}
+
+	public void diminirJogos(Jogo jogo) {
+		
+		int quant = quantidades.get(jogo.getId());
+		if (quant > 1){
+			quantidades.put(jogo.getId(), --quant);
+		}else{
+			execluirJogos(jogo);
+		}
+		
+	}
 
 }

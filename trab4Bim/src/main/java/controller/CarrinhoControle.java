@@ -18,7 +18,7 @@ public class CarrinhoControle {
 	private JogoEndpoint je;
 	
 	@Path("/adicionar/{id:[0-9][0-9]*}")
-	public void adicionarProduto(long id){
+	public void adicionarJogo(long id){
 		
 		Jogo jogo = je.findById(id).readEntity(Jogo.class);
 		carrinho.addJogos(jogo);
@@ -40,6 +40,20 @@ public class CarrinhoControle {
 		}
 		
 		
+	}
+	
+	@Path("/excluir/{id:[0-9][0-9]*}")
+	public void excluirJogo(long id){
+		
+		Jogo jogo = je.findById(id).readEntity(Jogo.class);
+		carrinho.execluirJogos(jogo);
+	}
+	
+	@Path("/excluir/{id:[0-9][0-9]*}")
+	public void diminirJogo(long id){
+		
+		Jogo jogo = je.findById(id).readEntity(Jogo.class);
+		carrinho.diminirJogos(jogo);
 	}
 	
 }

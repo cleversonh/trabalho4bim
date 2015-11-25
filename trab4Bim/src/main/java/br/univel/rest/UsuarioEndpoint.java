@@ -1,4 +1,4 @@
-package br.unvel.rest;
+package br.univel.rest;
 
 import java.util.List;
 
@@ -20,31 +20,31 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.UriBuilder;
-import br.unvel.model.Categoria;
+import br.unvel.model.Usuario;
 
 /**
  * 
  */
 @Stateless
-@Path("/categoria")
-public class CategoriaEndpoint
+@Path("/usuarios")
+public class UsuarioEndpoint
 {
    @PersistenceContext(unitName = "trab4Bim-persistence-unit")
    private EntityManager em;
 
    @POST
    @Consumes("application/json")
-   public Response create(Categoria entity)
+   public Response create(Usuario entity)
    {
       em.persist(entity);
-      return Response.created(UriBuilder.fromResource(CategoriaEndpoint.class).path(String.valueOf(entity.getId())).build()).build();
+      return Response.created(UriBuilder.fromResource(UsuarioEndpoint.class).path(String.valueOf(entity.getId())).build()).build();
    }
 
    @DELETE
    @Path("/{id:[0-9][0-9]*}")
    public Response deleteById(@PathParam("id") Long id)
    {
-      Categoria entity = em.find(Categoria.class, id);
+      Usuario entity = em.find(Usuario.class, id);
       if (entity == null)
       {
          return Response.status(Status.NOT_FOUND).build();
@@ -58,9 +58,9 @@ public class CategoriaEndpoint
    @Produces("application/json")
    public Response findById(@PathParam("id") Long id)
    {
-      TypedQuery<Categoria> findByIdQuery = em.createQuery("SELECT DISTINCT c FROM Categoria c WHERE c.id = :entityId ORDER BY c.id", Categoria.class);
+      TypedQuery<Usuario> findByIdQuery = em.createQuery("SELECT DISTINCT u FROM Usuario u WHERE u.id = :entityId ORDER BY u.id", Usuario.class);
       findByIdQuery.setParameter("entityId", id);
-      Categoria entity;
+      Usuario entity;
       try
       {
          entity = findByIdQuery.getSingleResult();
@@ -78,9 +78,9 @@ public class CategoriaEndpoint
 
    @GET
    @Produces("application/json")
-   public List<Categoria> listAll(@QueryParam("start") Integer startPosition, @QueryParam("max") Integer maxResult)
+   public List<Usuario> listAll(@QueryParam("start") Integer startPosition, @QueryParam("max") Integer maxResult)
    {
-      TypedQuery<Categoria> findAllQuery = em.createQuery("SELECT DISTINCT c FROM Categoria c ORDER BY c.id", Categoria.class);
+      TypedQuery<Usuario> findAllQuery = em.createQuery("SELECT DISTINCT u FROM Usuario u ORDER BY u.id", Usuario.class);
       if (startPosition != null)
       {
          findAllQuery.setFirstResult(startPosition);
@@ -89,14 +89,14 @@ public class CategoriaEndpoint
       {
          findAllQuery.setMaxResults(maxResult);
       }
-      final List<Categoria> results = findAllQuery.getResultList();
+      final List<Usuario> results = findAllQuery.getResultList();
       return results;
    }
 
    @PUT
    @Path("/{id:[0-9][0-9]*}")
    @Consumes("application/json")
-   public Response update(@PathParam("id") Long id, Categoria entity)
+   public Response update(@PathParam("id") Long id, Usuario entity)
    {
       if (entity == null)
       {
@@ -106,7 +106,7 @@ public class CategoriaEndpoint
       {
          return Response.status(Status.CONFLICT).entity(entity).build();
       }
-      if (em.find(Categoria.class, id) == null)
+      if (em.find(Usuario.class, id) == null)
       {
          return Response.status(Status.NOT_FOUND).build();
       }

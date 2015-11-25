@@ -1,4 +1,4 @@
-package br.unvel.rest;
+package br.univel.rest;
 
 import java.util.List;
 

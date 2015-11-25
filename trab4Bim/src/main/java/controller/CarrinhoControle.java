@@ -3,11 +3,11 @@ package controller;
 import javax.inject.Inject;
 import javax.ws.rs.Path;
 
+import br.univel.rest.JogoEndpoint;
+import br.univel.rest.VendaEndpoint;
 import br.unvel.model.Carrinho;
 import br.unvel.model.Jogo;
 import br.unvel.model.Venda;
-import br.unvel.rest.JogoEndpoint;
-import br.unvel.rest.VendaEndpoint;
 
 public class CarrinhoControle {
 

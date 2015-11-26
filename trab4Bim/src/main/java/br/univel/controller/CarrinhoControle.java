@@ -1,13 +1,13 @@
-package controller;
+package br.univel.controller;
 
 import javax.inject.Inject;
 import javax.ws.rs.Path;
 
+import br.univel.model.Carrinho;
+import br.univel.model.Jogo;
+import br.univel.model.Venda;
 import br.univel.rest.JogoEndpoint;
 import br.univel.rest.VendaEndpoint;
-import br.unvel.model.Carrinho;
-import br.unvel.model.Jogo;
-import br.unvel.model.Venda;
 
 public class CarrinhoControle {
 

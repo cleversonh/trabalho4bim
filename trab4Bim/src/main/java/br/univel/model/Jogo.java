@@ -1,18 +1,28 @@
-package br.unvel.model;
+package br.univel.model;
 
 import javax.persistence.Entity;
+
 import java.io.Serializable;
+
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Column;
 import javax.persistence.Version;
+
 import java.lang.Override;
+
+import br.univel.model.Categoria;
+
+import java.util.Set;
+import java.util.HashSet;
+
+import javax.persistence.ManyToMany;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @XmlRootElement
-public class Venda implements Serializable
+public class Jogo implements Serializable
 {
 
    @Id
@@ -23,8 +33,11 @@ public class Venda implements Serializable
    @Column(name = "version")
    private int version;
 
-   @Column(nullable = false)
-   private String jogo;
+   @Column(length = 60, nullable = false)
+   private String nome;
+
+   @ManyToMany
+   private Set<Categoria> categoria = new HashSet<Categoria>();
 
    @Column
    private float valor;
@@ -59,11 +72,11 @@ public class Venda implements Serializable
       {
          return true;
       }
-      if (!(obj instanceof Venda))
+      if (!(obj instanceof Jogo))
       {
          return false;
       }
-      Venda other = (Venda) obj;
+      Jogo other = (Jogo) obj;
       if (id != null)
       {
          if (!id.equals(other.id))
@@ -83,14 +96,24 @@ public class Venda implements Serializable
       return result;
    }
 
-   public String getJogo()
+   public String getNome()
    {
-      return jogo;
+      return nome;
    }
 
-   public void setJogo(String jogo)
+   public void setNome(String nome)
    {
-      this.jogo = jogo;
+      this.nome = nome;
+   }
+
+   public Set<Categoria> getCategoria()
+   {
+      return this.categoria;
+   }
+
+   public void setCategoria(final Set<Categoria> categoria)
+   {
+      this.categoria = categoria;
    }
 
    public float getValor()
@@ -117,8 +140,8 @@ public class Venda implements Serializable
    public String toString()
    {
       String result = getClass().getSimpleName() + " ";
-      if (jogo != null && !jogo.trim().isEmpty())
-         result += "jogo: " + jogo;
+      if (nome != null && !nome.trim().isEmpty())
+         result += "nome: " + nome;
       result += ", valor: " + valor;
       if (descricao != null && !descricao.trim().isEmpty())
          result += ", descricao: " + descricao;

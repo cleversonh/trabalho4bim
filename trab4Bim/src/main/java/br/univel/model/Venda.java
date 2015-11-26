@@ -1,4 +1,4 @@
-package br.unvel.model;
+package br.univel.model;
 
 import javax.persistence.Entity;
 import java.io.Serializable;
@@ -12,7 +12,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @XmlRootElement
-public class Categoria implements Serializable
+public class Venda implements Serializable
 {
 
    @Id
@@ -23,8 +23,14 @@ public class Categoria implements Serializable
    @Column(name = "version")
    private int version;
 
-   @Column(length = 20, nullable = false)
-   private String nome;
+   @Column(nullable = false)
+   private String jogo;
+
+   @Column
+   private float valor;
+
+   @Column
+   private String descricao;
 
    public Long getId()
    {
@@ -53,11 +59,11 @@ public class Categoria implements Serializable
       {
          return true;
       }
-      if (!(obj instanceof Categoria))
+      if (!(obj instanceof Venda))
       {
          return false;
       }
-      Categoria other = (Categoria) obj;
+      Venda other = (Venda) obj;
       if (id != null)
       {
          if (!id.equals(other.id))
@@ -77,22 +83,45 @@ public class Categoria implements Serializable
       return result;
    }
 
-   public String getNome()
+   public String getJogo()
    {
-      return nome;
+      return jogo;
    }
 
-   public void setNome(String nome)
+   public void setJogo(String jogo)
    {
-      this.nome = nome;
+      this.jogo = jogo;
+   }
+
+   public float getValor()
+   {
+      return valor;
+   }
+
+   public void setValor(float valor)
+   {
+      this.valor = valor;
+   }
+
+   public String getDescricao()
+   {
+      return descricao;
+   }
+
+   public void setDescricao(String descricao)
+   {
+      this.descricao = descricao;
    }
 
    @Override
    public String toString()
    {
       String result = getClass().getSimpleName() + " ";
-      if (nome != null && !nome.trim().isEmpty())
-         result += "nome: " + nome;
+      if (jogo != null && !jogo.trim().isEmpty())
+         result += "jogo: " + jogo;
+      result += ", valor: " + valor;
+      if (descricao != null && !descricao.trim().isEmpty())
+         result += ", descricao: " + descricao;
       return result;
    }
 }

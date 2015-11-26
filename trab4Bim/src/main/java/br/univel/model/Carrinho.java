@@ -1,4 +1,4 @@
-package br.unvel.model;
+package br.univel.model;
 
 import java.util.HashMap;
 

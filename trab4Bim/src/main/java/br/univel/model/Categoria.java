@@ -1,4 +1,4 @@
-package br.unvel.model;
+package br.univel.model;
 
 import javax.persistence.Entity;
 import java.io.Serializable;
@@ -12,7 +12,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @XmlRootElement
-public class Usuario implements Serializable
+public class Categoria implements Serializable
 {
 
    @Id
@@ -23,14 +23,8 @@ public class Usuario implements Serializable
    @Column(name = "version")
    private int version;
 
-   @Column(length = 60, nullable = false)
+   @Column(length = 20, nullable = false)
    private String nome;
-
-   @Column(length = 10, nullable = false)
-   private String login;
-
-   @Column(length = 40, nullable = false)
-   private String senha;
 
    public Long getId()
    {
@@ -59,11 +53,11 @@ public class Usuario implements Serializable
       {
          return true;
       }
-      if (!(obj instanceof Usuario))
+      if (!(obj instanceof Categoria))
       {
          return false;
       }
-      Usuario other = (Usuario) obj;
+      Categoria other = (Categoria) obj;
       if (id != null)
       {
          if (!id.equals(other.id))
@@ -93,36 +87,12 @@ public class Usuario implements Serializable
       this.nome = nome;
    }
 
-   public String getLogin()
-   {
-      return login;
-   }
-
-   public void setLogin(String login)
-   {
-      this.login = login;
-   }
-
-   public String getSenha()
-   {
-      return senha;
-   }
-
-   public void setSenha(String senha)
-   {
-      this.senha = senha;
-   }
-
    @Override
    public String toString()
    {
       String result = getClass().getSimpleName() + " ";
       if (nome != null && !nome.trim().isEmpty())
          result += "nome: " + nome;
-      if (login != null && !login.trim().isEmpty())
-         result += ", login: " + login;
-      if (senha != null && !senha.trim().isEmpty())
-         result += ", senha: " + senha;
       return result;
    }
 }

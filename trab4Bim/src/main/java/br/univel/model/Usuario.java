@@ -1,4 +1,4 @@
-package br.unvel.model;
+package br.univel.model;
 
 import javax.persistence.Entity;
 import java.io.Serializable;
@@ -8,15 +8,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Column;
 import javax.persistence.Version;
 import java.lang.Override;
-import br.unvel.model.Categoria;
-import java.util.Set;
-import java.util.HashSet;
-import javax.persistence.ManyToMany;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @XmlRootElement
-public class Jogo implements Serializable
+public class Usuario implements Serializable
 {
 
    @Id
@@ -30,14 +26,11 @@ public class Jogo implements Serializable
    @Column(length = 60, nullable = false)
    private String nome;
 
-   @ManyToMany
-   private Set<Categoria> categoria = new HashSet<Categoria>();
+   @Column(length = 10, nullable = false)
+   private String login;
 
-   @Column
-   private float valor;
-
-   @Column
-   private String descricao;
+   @Column(length = 40, nullable = false)
+   private String senha;
 
    public Long getId()
    {
@@ -66,11 +59,11 @@ public class Jogo implements Serializable
       {
          return true;
       }
-      if (!(obj instanceof Jogo))
+      if (!(obj instanceof Usuario))
       {
          return false;
       }
-      Jogo other = (Jogo) obj;
+      Usuario other = (Usuario) obj;
       if (id != null)
       {
          if (!id.equals(other.id))
@@ -100,34 +93,24 @@ public class Jogo implements Serializable
       this.nome = nome;
    }
 
-   public Set<Categoria> getCategoria()
+   public String getLogin()
    {
-      return this.categoria;
+      return login;
    }
 
-   public void setCategoria(final Set<Categoria> categoria)
+   public void setLogin(String login)
    {
-      this.categoria = categoria;
+      this.login = login;
    }
 
-   public float getValor()
+   public String getSenha()
    {
-      return valor;
+      return senha;
    }
 
-   public void setValor(float valor)
+   public void setSenha(String senha)
    {
-      this.valor = valor;
-   }
-
-   public String getDescricao()
-   {
-      return descricao;
-   }
-
-   public void setDescricao(String descricao)
-   {
-      this.descricao = descricao;
+      this.senha = senha;
    }
 
    @Override
@@ -136,9 +119,10 @@ public class Jogo implements Serializable
       String result = getClass().getSimpleName() + " ";
       if (nome != null && !nome.trim().isEmpty())
          result += "nome: " + nome;
-      result += ", valor: " + valor;
-      if (descricao != null && !descricao.trim().isEmpty())
-         result += ", descricao: " + descricao;
+      if (login != null && !login.trim().isEmpty())
+         result += ", login: " + login;
+      if (senha != null && !senha.trim().isEmpty())
+         result += ", senha: " + senha;
       return result;
    }
 }

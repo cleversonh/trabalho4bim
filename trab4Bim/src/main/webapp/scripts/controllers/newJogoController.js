@@ -1,5 +1,5 @@
 
-angular.module('trab4Bim').controller('NewJogoController', function ($scope, $location, locationParser, JogoResource , CategoriaResource) {
+angular.module('trab4bim').controller('NewJogoController', function ($scope, $location, locationParser, JogoResource , CategoriaResource) {
     $scope.disabled = false;
     $scope.$location = $location;
     $scope.jogo = $scope.jogo || {};

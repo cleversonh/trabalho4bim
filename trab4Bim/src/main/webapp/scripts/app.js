@@ -1,12 +1,9 @@
 'use strict';
 
-angular.module('trab4Bim',['ngRoute','ngResource'])
+angular.module('trab4bim',['ngRoute','ngResource'])
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider
       .when('/',{templateUrl:'views/landing.html',controller:'LandingPageController'})
-      .when('/Carrinhos',{templateUrl:'views/Carrinho/search.html',controller:'SearchCarrinhoController'})
-      .when('/Carrinhos/new',{templateUrl:'views/Carrinho/detail.html',controller:'NewCarrinhoController'})
-      .when('/Carrinhos/edit/:CarrinhoId',{templateUrl:'views/Carrinho/detail.html',controller:'EditCarrinhoController'})
       .when('/Categoria',{templateUrl:'views/Categoria/search.html',controller:'SearchCategoriaController'})
       .when('/Categoria/new',{templateUrl:'views/Categoria/detail.html',controller:'NewCategoriaController'})
       .when('/Categoria/edit/:CategoriaId',{templateUrl:'views/Categoria/detail.html',controller:'EditCategoriaController'})

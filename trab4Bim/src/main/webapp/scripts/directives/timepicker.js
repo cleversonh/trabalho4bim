@@ -1,7 +1,7 @@
 'use strict';
 
 var TIME_REGEX = /^([0-5][0-9])\:([0-5][0-9])(?:\:([0-5][0-9]))?$/;
-angular.module('trab4Bim').directive('time', function($parse, dateFilter) {
+angular.module('trab4bim').directive('time', function($parse, dateFilter) {
     return {
         restrict : "E",
         replace : true,

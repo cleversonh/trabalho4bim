@@ -1,6 +1,6 @@
 
 
-angular.module('trab4Bim').controller('EditCategoriaController', function($scope, $routeParams, $location, CategoriaResource ) {
+angular.module('trab4bim').controller('EditCategoriaController', function($scope, $routeParams, $location, CategoriaResource ) {
     var self = this;
     $scope.disabled = false;
     $scope.$location = $location;

@@ -1,6 +1,6 @@
 
 
-angular.module('trab4Bim').controller('SearchJogoController', function($scope, $http, JogoResource , CategoriaResource) {
+angular.module('trab4bim').controller('SearchJogoController', function($scope, $http, JogoResource , CategoriaResource) {
 
     $scope.search={};
     $scope.currentPage = 0;

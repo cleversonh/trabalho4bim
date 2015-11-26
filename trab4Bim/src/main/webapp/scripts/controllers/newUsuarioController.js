@@ -1,5 +1,5 @@
 
-angular.module('trab4Bim').controller('NewUsuarioController', function ($scope, $location, locationParser, UsuarioResource ) {
+angular.module('trab4bim').controller('NewUsuarioController', function ($scope, $location, locationParser, UsuarioResource ) {
     $scope.disabled = false;
     $scope.$location = $location;
     $scope.usuario = $scope.usuario || {};

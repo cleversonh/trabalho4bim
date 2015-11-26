@@ -1,6 +1,6 @@
 
 
-angular.module('trab4Bim').controller('SearchVendaController', function($scope, $http, VendaResource ) {
+angular.module('trab4bim').controller('SearchVendaController', function($scope, $http, VendaResource ) {
 
     $scope.search={};
     $scope.currentPage = 0;

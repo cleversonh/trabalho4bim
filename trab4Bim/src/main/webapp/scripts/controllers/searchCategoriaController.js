@@ -1,6 +1,6 @@
 
 
-angular.module('trab4Bim').controller('SearchCategoriaController', function($scope, $http, CategoriaResource ) {
+angular.module('trab4bim').controller('SearchCategoriaController', function($scope, $http, CategoriaResource ) {
 
     $scope.search={};
     $scope.currentPage = 0;

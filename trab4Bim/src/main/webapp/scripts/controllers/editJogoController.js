@@ -1,6 +1,6 @@
 
 
-angular.module('trab4Bim').controller('EditJogoController', function($scope, $routeParams, $location, JogoResource , CategoriaResource) {
+angular.module('trab4bim').controller('EditJogoController', function($scope, $routeParams, $location, JogoResource , CategoriaResource) {
     var self = this;
     $scope.disabled = false;
     $scope.$location = $location;

@@ -1,5 +1,5 @@
 
-angular.module('trab4Bim').controller('NewCategoriaController', function ($scope, $location, locationParser, CategoriaResource ) {
+angular.module('trab4bim').controller('NewCategoriaController', function ($scope, $location, locationParser, CategoriaResource ) {
     $scope.disabled = false;
     $scope.$location = $location;
     $scope.categoria = $scope.categoria || {};

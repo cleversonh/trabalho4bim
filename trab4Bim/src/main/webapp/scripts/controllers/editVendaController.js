@@ -1,6 +1,6 @@
 
 
-angular.module('trab4Bim').controller('EditVendaController', function($scope, $routeParams, $location, VendaResource ) {
+angular.module('trab4bim').controller('EditVendaController', function($scope, $routeParams, $location, VendaResource ) {
     var self = this;
     $scope.disabled = false;
     $scope.$location = $location;

@@ -1,5 +1,5 @@
 
-angular.module('trab4Bim').controller('NewVendaController', function ($scope, $location, locationParser, VendaResource ) {
+angular.module('trab4bim').controller('NewVendaController', function ($scope, $location, locationParser, VendaResource ) {
     $scope.disabled = false;
     $scope.$location = $location;
     $scope.venda = $scope.venda || {};

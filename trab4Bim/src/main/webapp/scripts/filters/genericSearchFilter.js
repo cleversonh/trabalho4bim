@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('trab4Bim').filter('searchFilter', function() {
+angular.module('trab4bim').filter('searchFilter', function() {
 
     function matchObjectProperties(expectedObject, actualObject) {
         var flag = true;
